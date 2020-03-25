@@ -43,6 +43,24 @@ Node* Node::getParent(){
     return Parent;
 }
 
+/*Node* Node::getSibling(Node* p){
+    Node* p = getParent();
+    if (p == nullptr){
+        return nullptr;
+    }
+    if (n == p->getLeft()){
+        return p->getRight();
+    }
+    else{
+        return p->getLeft();
+    }
+}
+
+Node* Node::getUncle(Node* n){
+    Node* p = getParent();
+    return getSibling(p);
+}*/
+
 Node::~Node(){
     
 }
