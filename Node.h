@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstring>
 
+#define CC_RED "\033[1m"
+
 using namespace std;
 
 class Node{
@@ -18,8 +20,11 @@ class Node{
       Node* getRight();
       void setParent(Node*);
       Node* getParent();
+      //Node* getUncle(Node*);
+      //Node* getSibling(Node* );
     private:
       int Key;
+      bool Color;
       Node* Left;
       Node* Right;
       Node* Parent;
