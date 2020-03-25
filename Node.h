@@ -4,9 +4,6 @@
 #include <iostream>
 #include <cstring>
 
-#define CC_RED "\033[34m"
-#define CC_CLR "\033[0m"
-
 using namespace std;
 
 class Node{
