@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstring>
 
-#define CC_RED "\033[1m"
+#define CC_RED "\033[34m"
 
 using namespace std;
 
