@@ -20,7 +20,7 @@ int main()
   char input[80];
   bool running = true;
   while (running == true){
-    cout<<CC_RED<<"Do you want to add a single number, read in a series of numbers from a file, print out a representation of the tree, or quit?"<<endl;
+    cout<<CC_RED<<"Do you want to add a single number, read in a series of numbers from a file, print out a representation of the tree, or quit?"<<CC_CLR<<endl;
     cin.getline(input, sizeof(input));
     strupper(input);
     if (strcmp(input, "ADD") == 0){
