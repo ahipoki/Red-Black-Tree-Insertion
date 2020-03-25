@@ -20,7 +20,7 @@ int main()
   char input[80];
   bool running = true;
   while (running == true){
-    cout<<CC_RED<<"Do you want to add a single number, read in a series of numbers from a file, print out a representation of the tree, or quit?"<<CC_CLR<<endl;
+    cout<<"Do you want to add a single number, read in a series of numbers from a file, print out a representation of the tree, or quit?"<<endl;
     cin.getline(input, sizeof(input));
     strupper(input);
     if (strcmp(input, "ADD") == 0){
@@ -36,7 +36,7 @@ int main()
       running = false;
     }
     else{
-      cout<<"That's an invalid option"<<endl;
+      cout<<CC_RED<<"That's an invalid option"<<CC_CLR<<endl;
     }
   }
   delete rbt;
