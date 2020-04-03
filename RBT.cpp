@@ -5,7 +5,7 @@
 using namespace std;
 
 RBT::RBT(){
-    head = NULL;
+    root = nullptr;
 }
 
 void RBT::Insert(int n){
