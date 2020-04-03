@@ -11,5 +11,13 @@ class RBT{
       ~RBT();
     private:
       Node* root;
+    protected:
+      void rotateLeft(Node*&);
+      void rotateRight(Node*&);
+      void fixInsert(Node*&);
+      int getColor(Node*&);
+      void setColor(Node*&, int);
+      Node* Insert(Node*&, Node*&);
+      void PrintTree(Node*, int);
 };
 #endif
