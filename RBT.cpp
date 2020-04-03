@@ -133,7 +133,7 @@ void RBT::fixInsert(Node*& ptr){
 }
 
 void RBT::PrintTree(){
-    PrintTree(head, 0);
+    PrintTree(root, 0);
 }
 
 void RBT::PrintTree(Node* h, int d){
