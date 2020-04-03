@@ -6,40 +6,51 @@ using namespace std;
 
 Node::Node(int key){
     this->Key = key;
+    //this key is key
     color = RED;
+    //Color is red
     Left = Right = Parent = nullptr;
+    //Left, right, and parent are nullptr
 }
 
-void Node::setKey(int key){
+void Node::setKey(int key){//Set key
     Key = key;
+    //Key is key
 }
 
-int Node::getKey(){
+int Node::getKey(){//Get key
     return Key;
+    //Return key
 }
 
-void Node::setLeft(Node* left){
+void Node::setLeft(Node* left){//Set left node
     Left = left;
+    //Left is left
 }
 
-Node* Node::getLeft(){
+Node* Node::getLeft(){//Get left node
     return Left;
+    //Return left node
 }
 
-void Node::setRight(Node* right){
+void Node::setRight(Node* right){//Set right node
     Right = right;
+    //Right is right
 }
 
-Node* Node::getRight(){
+Node* Node::getRight(){//Get right node
     return Right;
+    //Return right node
 }
 
-void Node::setParent(Node* parent){
+void Node::setParent(Node* parent){//Set parent node
     Parent = parent;
+    //Parent is parent
 }
 
-Node* Node::getParent(){
+Node* Node::getParent(){//Get parent node
     return Parent;
+    //Return parent node
 }
 
 /*Node* Node::getSibling(Node* p){
@@ -60,6 +71,6 @@ Node* Node::getUncle(Node* n){
     return getSibling(p);
 }*/
 
-Node::~Node(){
+Node::~Node(){//Destructor
     
 }
