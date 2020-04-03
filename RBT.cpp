@@ -32,26 +32,15 @@ void RBT::Insert(Node*& root, Node*& ptr){
     if (root == nullptr){
         return ptr;
     }
-    else if (key < h->getKey()){
-        if (h->getLeft() == NULL){
-            h->setLeft(new Node(key));
-            h->getLeft()->setParent(h);
-            return;
-        }
-        Node* left = h->getLeft();
-        Insert(left, key);
-        return;
+    if (ptr->Key < root->Key){
+        root->Left = Insert(root->Left, ptr);
+        root->Left->Parent = root;
     }
-    else{
-        if (h->getRight() == NULL){
-            h->setRight(new Node(key));
-            h->getRight()->setParent(h);
-            return;
-        }
-        Node* right = h->getRight();
-        Insert(right, key);
-        return;
+    else if (ptr->Key > root->Key){
+        root->Right = Insert(root->Right, ptr);
+        root->Right->Parent = root;
     }
+    return root;
 }
 
 void RBT::PrintTree(){
