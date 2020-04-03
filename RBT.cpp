@@ -98,6 +98,16 @@ void RBT::fixInsert(Node*& ptr){
                 setColor(Grandparent, RED);
                 ptr = Grandparent;
             }
+            else{
+                if (ptr == Parent->Right){
+                    rotateLeft(Parent);
+                    ptr = Parent;
+                    Parent = ptr->Parent;
+                }
+                rotateRight(Grandparent);
+                swap(Parent->color, Grandparent->color);
+                ptr = Parent;
+            }
         }
     }
 }
