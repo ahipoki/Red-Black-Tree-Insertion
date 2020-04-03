@@ -85,7 +85,15 @@ void RBT::rotateRight(Node*& ptr){
 }
 
 void RBT::fixInsert(Node*& ptr){
-    
+    Node* Parent = nullptr;
+    Node* Grandparent = nullptr;
+    while (ptr != root && getColor(ptr) == RED && getColor(ptr->Parent) == RED){
+        Parent = ptr->Parent;
+        Grandparent = Parent->Parent;
+        if (Parent == Grandparent->Left){
+            Node* Uncle = Grandparent->Right;
+        }
+    }
 }
 
 void RBT::PrintTree(){
