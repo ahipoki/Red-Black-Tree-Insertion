@@ -43,6 +43,14 @@ void RBT::Insert(Node*& root, Node*& ptr){
     return root;
 }
 
+void RBT::rotateLeft(Node*& ptr){
+    
+}
+
+void RBT::rotateRight(Node*& ptr){
+    
+}
+
 void RBT::PrintTree(){
     PrintTree(head, 0);
 }
