@@ -4,7 +4,11 @@
 #include <iostream>
 #include <cstring>
 
+//#define CC_RED "\033[34m"
+
 using namespace std;
+
+enum Color {RED, BLACK};
 
 class Node{
     public:
@@ -20,9 +24,9 @@ class Node{
       Node* getParent();
       //Node* getUncle(Node*);
       //Node* getSibling(Node* );
+      int color;
     private:
       int Key;
-      bool Color;
       Node* Left;
       Node* Right;
       Node* Parent;
