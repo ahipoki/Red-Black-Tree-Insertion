@@ -15,8 +15,17 @@ int RBT::getColor(Node*& node){
     return node->color;
 }
 
+void RBT::setColor(Node*& node, int color){
+    if (node == nullptr){
+        return;
+    }
+    node->color = color;
+}
+
 void RBT::Insert(int n){
-    Insert(head, n);
+    Node* node = new Node(n);
+    root = Insert(root, node);
+    fixInsert(node);
 }
 
 void RBT::Insert(Node* &h, int key){
