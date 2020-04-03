@@ -54,6 +54,14 @@ void RBT::rotateLeft(Node*& ptr){
     if (ptr->Parent = nullptr){
         root = rightChild;
     }
+    else if (ptr == ptr->Parent->Left){
+        ptr->Parent->Left = rightChild;
+    }
+    else{
+        ptr->Parent->Right = rightChild;
+    }
+    rightChild->Left = ptr;
+    ptr->Parent = rightChild;
 }
 
 void RBT::rotateRight(Node*& ptr){
