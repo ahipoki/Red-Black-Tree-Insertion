@@ -8,6 +8,13 @@ RBT::RBT(){
     root = nullptr;
 }
 
+int RBT::getColor(Node*& node){
+    if (node == nullptr){
+        return BLACK;
+    }
+    return node->color;
+}
+
 void RBT::Insert(int n){
     Insert(head, n);
 }
