@@ -44,7 +44,16 @@ void RBT::Insert(Node*& root, Node*& ptr){
 }
 
 void RBT::rotateLeft(Node*& ptr){
+    Node* rightChild = ptr->Right;
+    ptr->Right = rightChild->Left;
     
+    if (ptr->Right != nullptr){
+        ptr->Right->Parent = ptr;
+    }
+    rightChild->Parent = ptr->Parent;
+    if (ptr->Parent = nullptr){
+        root = rightChild;
+    }
 }
 
 void RBT::rotateRight(Node*& ptr){
