@@ -109,7 +109,27 @@ void RBT::fixInsert(Node*& ptr){
                 ptr = Parent;
             }
         }
+        else{
+            Node* Uncle = Grandparent->Left;
+            if (getColor(Uncle) == RED){
+                setColor(Uncle, BLACK);
+                setColor(Parent, BLACK);
+                setColor(Grandparent, RED);
+                ptr = Grandparent;
+            }
+            else{
+                if (ptr == Parent->Left){
+                    rotateRight(Parent);
+                    ptr = Parent;
+                    Parent = ptr->Parent;
+                }
+                rotateLeft(Grandparent);
+                swap(Parent->color, Grandparent->color);
+                ptr = Parent;
+            }
+        }
     }
+    setColor(root, BLACK);
 }
 
 void RBT::PrintTree(){
