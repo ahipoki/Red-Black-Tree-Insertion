@@ -28,10 +28,9 @@ void RBT::Insert(int n){
     fixInsert(node);
 }
 
-void RBT::Insert(Node* &h, int key){
-    if (h == NULL){
-        head = new Node(key);
-        return;
+void RBT::Insert(Node*& root, Node*& ptr){
+    if (root == nullptr){
+        return ptr;
     }
     else if (key < h->getKey()){
         if (h->getLeft() == NULL){
