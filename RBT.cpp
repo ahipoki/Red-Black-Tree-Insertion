@@ -92,6 +92,12 @@ void RBT::fixInsert(Node*& ptr){
         Grandparent = Parent->Parent;
         if (Parent == Grandparent->Left){
             Node* Uncle = Grandparent->Right;
+            if (getColor(Uncle) == RED){
+                setColor(Uncle, BLACK);
+                setColor(Parent, BLACK);
+                setColor(Grandparent, RED);
+                ptr = Grandparent;
+            }
         }
     }
 }
