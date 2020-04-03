@@ -5,10 +5,9 @@
 using namespace std;
 
 Node::Node(int key){
-    Key = key;
-    Left = NULL;
-    Right = NULL;
-    Parent = NULL;
+    this->Key = key;
+    color = RED;
+    Left = Right = Parent = nullptr;
 }
 
 void Node::setKey(int key){
