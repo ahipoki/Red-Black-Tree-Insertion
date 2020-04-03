@@ -10,9 +10,6 @@ class RBT{
       void PrintTree();
       ~RBT();
     private:
-      void Insert(Node*&, int);
-      void Read(Node*&, int);
-      void PrintTree(Node*, int);
-      Node* head;
+      Node* root;
 };
 #endif
