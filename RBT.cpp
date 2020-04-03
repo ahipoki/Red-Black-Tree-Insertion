@@ -4,84 +4,116 @@
 
 using namespace std;
 
-RBT::RBT(){
+RBT::RBT(){//Constructor
     root = nullptr;
+    //Root is nullptr
 }
 
-int RBT::getColor(Node*& node){
-    if (node == nullptr){
+int RBT::getColor(Node*& node){//Get color of node
+    if (node == nullptr){//If node is null pointer
         return BLACK;
+        //Return black
     }
     return node->color;
+    //Return color of node
 }
 
-void RBT::setColor(Node*& node, int color){
-    if (node == nullptr){
+void RBT::setColor(Node*& node, int color){//Set color of node
+    if (node == nullptr){//If node is null pointer
         return;
+        //Return
     }
     node->color = color;
+    //Color of node is color
 }
 
-void RBT::Insert(int n){
+void RBT::Insert(int n){//Insert
     Node* node = new Node(n);
+    //node is new node
     root = Insert(root, node);
+    //Root node is Insert()
     fixInsert(node);
+    //Fix w/Insert
 }
 
-void RBT::Insert(Node*& root, Node*& ptr){
-    if (root == nullptr){
+void RBT::Insert(Node*& root, Node*& ptr){//Insert recursion
+    if (root == nullptr){//If root node is null pointer
         return ptr;
+        //Return ptr
     }
-    if (ptr->Key < root->Key){
+    if (ptr->Key < root->Key){//If key of ptr < key of root
         root->Left = Insert(root->Left, ptr);
+        //Left node of root is Insert
         root->Left->Parent = root;
+        //Parent of left of root node is new root node
     }
-    else if (ptr->Key > root->Key){
+    else if (ptr->Key > root->Key){//Else if key of ptr > key of root
         root->Right = Insert(root->Right, ptr);
+        //Right node of root node is Insert
         root->Right->Parent = root;
+        //Parent of right of root node is new root node
     }
     return root;
+    //Return root node
 }
 
-void RBT::rotateLeft(Node*& ptr){
+void RBT::rotateLeft(Node*& ptr){//Rotate left for fixing
     Node* rightChild = ptr->Right;
+    //Right child is right node of ptr
     ptr->Right = rightChild->Left;
+    //Right node of ptr is left node of rightChild
     
-    if (ptr->Right != nullptr){
+    if (ptr->Right != nullptr){//If right node of ptr is not null pointer
         ptr->Right->Parent = ptr;
+        //Parent of right of ptr node is ptr
     }
     rightChild->Parent = ptr->Parent;
-    if (ptr->Parent = nullptr){
+    //Parent node of rightChild is parent node of ptr
+    if (ptr->Parent = nullptr){//If parent node of ptr is null pointer
         root = rightChild;
+        //Root node is now rightChild
     }
-    else if (ptr == ptr->Parent->Left){
+    else if (ptr == ptr->Parent->Left){//Else if ptr equals left of parent of ptr node
         ptr->Parent->Left = rightChild;
+        //Left of parent of ptr node is now rightChild
     }
-    else{
+    else{//Anything else
         ptr->Parent->Right = rightChild;
+        //Right of parent of ptr node is now rightChild
     }
     rightChild->Left = ptr;
+    //Left node of rightChild is now ptr
     ptr->Parent = rightChild;
+    //Parent node of ptr is now rightChild
 }
 
-void RBT::rotateRight(Node*& ptr){
+void RBT::rotateRight(Node*& ptr){//Rotate right
     Node* leftChild = ptr->Left;
+    //leftChild is left node of ptr
     ptr->Left = leftChild->Right;
-    if (ptr->Left != nullptr){
+    //Left node of ptr is now right node of leftChild
+    if (ptr->Left != nullptr){//If left node of ptr is not null pointer
         ptr->Left->Parent = ptr;
+        //Parent node of left node of ptr is now ptr
     }
     leftChild->Parent = ptr->Parent;
-    if (ptr->Parent == nullptr){
+    //Parent node of leftChild is now parent node of ptr
+    if (ptr->Parent == nullptr){//If parent node of ptr is null pointer
         root = leftChild;
+        //Root node is now leftChild
     }
-    else if (ptr == ptr->Parent->Left){
+    else if (ptr == ptr->Parent->Left){//Else if ptr equals left node of parent node of ptr
         ptr->Parent->Left = leftChild;
+        //Left node of parent node of ptr is leftChild
     }
-    else{
+    else{//Anything else
         ptr->Parent->Right = leftChild;
+        //Right node of parent node of ptr is now leftChild
     }
     leftChild->Right = ptr;
+    //Right node of leftChild is now ptr
     ptr->Parent = leftChild;
+    //Parent node of ptr is now leftChild
 }
 
 void RBT::fixInsert(Node*& ptr){
