@@ -44,6 +44,17 @@ void RBT::fixTree(Node* n){
             n->color = BLACK;
         }
     }
+    else if (n->Parent->color == BLACK){
+        
+    }
+    else if (n->getUncle() && n->getUncle()->color == RED){
+        n->Parent->color = RED;
+        n->getUncle()->color = RED;
+        if (n->Parent->Parent->color == BLACK){
+            n->Parent->Parent->color = RED;
+        }
+        fixTree(n->Parent->Parent);
+    }
 }
 
 /*int RBT::getColor(Node*& node){//Get color of node
