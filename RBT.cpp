@@ -35,6 +35,17 @@ void RBT::Insert(Node* &h, Node* n){
     }
 }
 
+void RBT::fixTree(Node* n){
+    if (n == NULL){
+        return;
+    }
+    if (n->Parent == NULL){
+        if (n->color == RED){
+            n->color = BLACK;
+        }
+    }
+}
+
 /*int RBT::getColor(Node*& node){//Get color of node
     if (node == nullptr){//If node is null pointer
         return BLACK;
@@ -42,7 +53,7 @@ void RBT::Insert(Node* &h, Node* n){
     }
     return node->color;
     //Return color of node
-}*/
+}
 
 void RBT::setColor(Node*& node, int color){//Set color of node
     if (node == nullptr){//If node is null pointer
@@ -51,36 +62,6 @@ void RBT::setColor(Node*& node, int color){//Set color of node
     }
     node->color = color;
     //Color of node is color
-}
-
-void RBT::Insert(int n){//Insert
-    Node* node = new Node(n);
-    //node is new node
-    root = Insert(root, node);
-    //Root node is Insert()
-    fixInsert(node);
-    //Fix w/Insert
-}
-
-void RBT::Insert(Node*& root, Node*& ptr){//Insert recursion
-    if (root == nullptr){//If root node is null pointer
-        return ptr;
-        //Return ptr
-    }
-    if (ptr->Key < root->Key){//If key of ptr < key of root
-        root->Left = Insert(root->Left, ptr);
-        //Left node of root is Insert
-        root->Left->Parent = root;
-        //Parent of left of root node is new root node
-    }
-    else if (ptr->Key > root->Key){//Else if key of ptr > key of root
-        root->Right = Insert(root->Right, ptr);
-        //Right node of root node is Insert
-        root->Right->Parent = root;
-        //Parent of right of root node is new root node
-    }
-    return root;
-    //Return root node
 }
 
 void RBT::rotateLeft(Node*& ptr){//Rotate left for fixing
@@ -188,7 +169,7 @@ void RBT::fixInsert(Node*& ptr){
         }
     }
     setColor(root, BLACK);
-}
+}*/
 
 void RBT::PrintTree(){
     PrintTree(root, 0);
