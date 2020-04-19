@@ -1,6 +1,5 @@
 #include <iostream>
 #include "RBT.h"
-#include "Node.h"
 
 using namespace std;
 
@@ -9,14 +8,41 @@ RBT::RBT(){//Constructor
     //Root is nullptr
 }
 
-int RBT::getColor(Node*& node){//Get color of node
+void RBT::Insert(int in){
+    Node* n = new Node(in);
+    Insert(root, n);
+    fixTree(n);
+}
+
+void RBT::Insert(Node* &h, Node* n){
+    if (root == NULL){
+        root = n;
+        return;
+    }
+    if (n->key < h->key){
+        if (h->Left){
+            Node* t = h->Left;
+            Insert(t, n);
+            return;
+        }
+        else{
+            h->Left = n;
+        }
+    }
+    n->Parent = h;
+    if (n->color == BLACK){
+        n->color = RED;
+    }
+}
+
+/*int RBT::getColor(Node*& node){//Get color of node
     if (node == nullptr){//If node is null pointer
         return BLACK;
         //Return black
     }
     return node->color;
     //Return color of node
-}
+}*/
 
 void RBT::setColor(Node*& node, int color){//Set color of node
     if (node == nullptr){//If node is null pointer
