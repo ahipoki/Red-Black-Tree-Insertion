@@ -3,12 +3,7 @@
 #include <fstream>
 #include <cmath>
 #include <cstdlib>
-#include "Node.h"
 #include "RBT.h"
-
-#define CC_RED "\033[31m"
-#define CC_CLR "\033[0m"
-//Color text
 
 using namespace std;
 
