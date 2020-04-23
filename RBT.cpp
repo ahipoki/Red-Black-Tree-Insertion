@@ -77,7 +77,24 @@ void RBT::fixTree(Node* n){
             p->rotateRight();
             n = n->getRight();
         }
+        p = n->getParent();
+        g = p->getParent();
+        if (n == p->getLeft()){
+            g->rotateRight();
+        }
+        else{
+            g->rotateLeft();
+        }
+        if (g == root){
+            root = p;
+        }
+        p->toggleColor();
+        g->toggleColor();
     }
+}
+
+void RBT::PrintTree(){
+    PrintTree(root, 0);
 }
 
 /*int RBT::getColor(Node*& node){//Get color of node
@@ -205,26 +222,27 @@ void RBT::fixInsert(Node*& ptr){
     setColor(root, BLACK);
 }*/
 
-void RBT::PrintTree(){
-    PrintTree(root, 0);
-}
-
 void RBT::PrintTree(Node* h, int d){
     if (!h){
         return;
     }
-    if (h->getLeft()){
-        PrintTree(h->getLeft(), d+1);
-    }
+    PrintTree(h->getLeft(), d+1);
     for (int i = 0; i < d; i++){
         cout<<"   ";
     }
-    cout<<h->getKey()<<endl;
-    if (h->getRight()){
-        PrintTree(h->getRight(), d+1);
-    }
+    cout<<(h->isRed() ? "\033[1;31m" : "\033[1;30m")<<h->getKey()<<"\033[0m"<<endl;
+    PrintTree(h->getRight(), d+1);
 }
 
 RBT::~RBT(){
 
+}
+
+void RBT::deleteTree(Node* n){
+    if (!n){
+        return;
+    }
+    deleteTree(n->getLeft());
+    deleteTree(n->getRight());
+    delete n;
 }
