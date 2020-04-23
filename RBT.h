@@ -18,8 +18,6 @@ class RBT{
       //Red-black tree
       void Insert(int);
       //Insert
-      void Read();
-      //Read
       void PrintTree();
       //Print tree
       ~RBT();
@@ -30,16 +28,6 @@ class RBT{
       void Insert(Node*&, Node*);
       void PrintTree(Node*, int);
       void fixTree(Node*);
-    protected:
-      void rotateLeft(Node*&);
-      //Rotate left
-      void rotateRight(Node*&);
-      //Rotate right
-      //void fixInsert(Node*&);
-      //Fix w/insert
-      //int getColor(Node*&);
-      //Get color of node
-      //void setColor(Node*&, int);
-      //Set color of node
+      void deleteTree(Node*);
 };
 #endif
