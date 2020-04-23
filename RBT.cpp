@@ -1,5 +1,6 @@
 #include <iostream>
 #include "RBT.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -19,19 +20,29 @@ void RBT::Insert(Node* &h, Node* n){
         root = n;
         return;
     }
-    if (n->key < h->key){
-        if (h->Left){
-            Node* t = h->Left;
+    if (n->getKey() < h->getKey()){
+        if (h->getLeft()){
+            Node* t = h->getLeft();
             Insert(t, n);
             return;
         }
         else{
-            h->Left = n;
+            h->setLeft(n);
         }
     }
-    n->Parent = h;
-    if (n->color == BLACK){
-        n->color = RED;
+    else{
+        if (h->getRight()){
+            Node* t = h->getRight();
+            Insert(t, n);
+            return;
+        }
+        else{
+            h->setRight(n);
+        }
+    }
+    n->setParent(h);
+    if (!n->isRed()){
+        n->toggleColor();
     }
 }
 
@@ -39,21 +50,21 @@ void RBT::fixTree(Node* n){
     if (n == NULL){
         return;
     }
-    if (n->Parent == NULL){
-        if (n->color == RED){
-            n->color = BLACK;
+    if (n->getParent() == NULL){
+        if (n->isRed()){
+            n->toggleColor();
         }
     }
-    else if (n->Parent->color == BLACK){
+    else if (!n->getParent()->isRed()){
         
     }
-    else if (n->getUncle() && n->getUncle()->color == RED){
-        n->Parent->color = RED;
-        n->getUncle()->color = RED;
-        if (n->Parent->Parent->color == BLACK){
-            n->Parent->Parent->color = RED;
+    else if (n->getUncle() && n->getUncle()->isRed()){
+        n->getParent()->toggleColor();
+        n->getUncle()->toggleColor();
+        if (!n->getParent()->getParent()->isRed()){
+            n->getParent()->getParent()->toggleColor();
         }
-        fixTree(n->Parent->Parent);
+        fixTree(n->getParent()->getParent());
     }
 }
 
