@@ -106,6 +106,7 @@ void Read(RBT* rbt){//Read
   else{//If it didn't work
     cout<<"Couldn't find that file"<<endl;
     //Tell the user the file couldn't be found
+    return;
   }
   fileStream.close();
   //Close the file
