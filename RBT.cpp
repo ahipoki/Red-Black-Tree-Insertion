@@ -66,6 +66,18 @@ void RBT::fixTree(Node* n){
         }
         fixTree(n->getParent()->getParent());
     }
+    else{
+        Node* p = n->getParent();
+        Node* g = p->getParent();
+        if (n == p->getRight() && p == g->getLeft()){
+            p->rotateLeft();
+            n = n->getLeft();
+        }
+        else if (n == p->getLeft() && p == g->getRight()){
+            p->rotateRight();
+            n = n->getRight();
+        }
+    }
 }
 
 /*int RBT::getColor(Node*& node){//Get color of node
