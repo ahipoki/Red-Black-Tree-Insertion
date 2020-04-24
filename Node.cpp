@@ -72,5 +72,27 @@ void Node::rotateLeft(){
     }
   }
   r->setParent(p);
-  
+}
+
+void Node::rotateRight(){
+  if (Left == NULL){
+    return;
+  }
+  Node* l = Left;
+  Node* p = Parent;
+  Left = Left->getRight();
+  l->setRight(this);
+  Parent = l;
+  if (Left != NULL){
+    Left->setParent(this);
+  }
+  if (p != NULL){
+    if (this == p->getLeft()){
+      p->setLeft(l);
+    }
+    else{
+      p->setRight(l);
+    }
+  }
+  l->setParent(p);
 }
