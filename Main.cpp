@@ -64,15 +64,19 @@ void strupper(char* str){//Make input uppercase
 
 int strToInt(char* str){//Str to int function
     int num = 0;
+    //Int num
     for (int i = 0; i < strlen(str); i++){//Loop through length of str
         if (!isdigit(str[i])){//If it's not a digit
           continue;
           //Continue
         }
         num *= 10;
+        //Num now equals num*10
         num += str[i] - '0';
+        //Add str[i] - 0 to num
     }
     return num;
+    //Return num
 }
 
 void Insert(RBT* rbt){//Insert
@@ -110,9 +114,33 @@ void Read(RBT* rbt){//Read
   }
   fileStream.close();
   //Close the file
+  char* f = new char[strlen(line)+1]();
+  //f is new char strlen of line + 1
+  int ind = 0;
+  //New int shortened index
+  for (int i = 0; i < strlen(line); i++){//For loop loop through length of line
+    if (line[i] == ' '){//If i in line is a space
+      if (strlen(f) > 0){//If length of f is greater than 0
+        rbt->Insert(strToInt(f));
+        //Call public insert function with strToInt function with f
+        f = new char[strlen(line)+1]();
+        //f is new char of length line + 1
+        ind = 0;
+        //Set ind to 0
+      }
+      else{//Anything else
+        if (isdigit(line[i])){//If line[i] is a digit
+          f[ind++] = line[i];
+          //f[ind+1] now equals line[i]
+        }
+      }
+    }
+  }
+  return;
+  //Return
 }
 
-void PrintTree(RBT* rbt){//Print
+void PrintTree(RBT* rbt){//Print tree
   rbt->PrintTree();
   //Call PrintTree
 }
