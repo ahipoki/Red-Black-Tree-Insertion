@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "RBT.h"
+#include "Node.h"
 
 using namespace std;
 
