@@ -67,7 +67,7 @@ bool Node::isRed(){//Check node's color
 }
 
 void Node::rotateLeft(){//Rotate left
-  if (right == NULL){//If there's no node to the right
+  if (Right == NULL){//If there's no node to the right
     return;
     //Return
   }
