@@ -1,17 +1,6 @@
 #ifndef RBT_H
 #define RBT_H
 
-enumc Color {RED, BLACK};
-
-struct Node
-{
-    int key;
-    int color;
-    Node *Left, *Right, *Parent;
-    
-    explicit Node(int);
-};
-
 class RBT{
     public:
       RBT();
