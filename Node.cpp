@@ -96,3 +96,24 @@ void Node::rotateRight(){
   }
   l->setParent(p);
 }
+
+Node* Node::getSibling(){
+  if (Parent == NULL){
+    return NULL;
+  }
+  if (this == Parent->getLeft()){
+    return Parent->getRight();
+  }
+  return Parent->getLeft();
+}
+
+Node* Node::getUncle(){
+  if (Parent == NULL){
+    return NULL;
+  }
+  return Parent->getSibling();
+}
+
+Node::~Node(){
+  
+}
