@@ -1,6 +1,8 @@
 #ifndef RBT_H
 #define RBT_H
 
+#include "Node.h"
+
 class RBT{
     public:
       RBT();
