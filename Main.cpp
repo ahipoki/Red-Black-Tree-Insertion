@@ -123,17 +123,17 @@ void Read(RBT* rbt){//Read
     if (line[i] == ' '){//If i in line is a space
       if (strlen(f) > 0){//If length of f is greater than 0
         rbt->Insert(strToInt(f));
-        //Call public insert function with strToInt function with f
-        f = new char[strlen(line)+1]();
-        //f is new char of length line + 1
-        ind = 0;
-        //Set ind to 0
       }
-      else{//Anything else
-        if (isdigit(line[i])){//If line[i] is a digit
-          f[ind++] = line[i];
-          //f[ind+1] now equals line[i]
-        }
+        //Call public insert function with strToInt function with f
+      f = new char[strlen(line)+1]();
+      //f is new char of length line + 1
+      ind = 0;
+      //Set ind to 0
+    }
+    else{//Anything else
+      if (isdigit(line[i])){//If line[i] is a digit
+        f[ind++] = line[i];
+        //f[ind+1] now equals line[i]
       }
     }
   }
